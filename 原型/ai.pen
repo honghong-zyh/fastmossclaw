@@ -1,0 +1,2223 @@
+{
+  "version": "2.8",
+  "children": [
+    {
+      "type": "frame",
+      "id": "jsbs6",
+      "x": -741,
+      "y": -1130,
+      "name": "FastMoss AI Prototype",
+      "width": 1440,
+      "height": 1426,
+      "fill": "#F9FAFB",
+      "children": [
+        {
+          "type": "frame",
+          "id": "Hfbso",
+          "name": "Sidebar",
+          "width": 240,
+          "height": "fill_container",
+          "fill": "#FFFFFF",
+          "stroke": {
+            "thickness": {
+              "right": 1
+            },
+            "fill": "#E2E8F0"
+          },
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "heNB2",
+              "name": "sidebar_header",
+              "width": "fill_container",
+              "height": 64,
+              "stroke": {
+                "thickness": {
+                  "bottom": 1
+                },
+                "fill": "#F1F5F9"
+              },
+              "padding": 16,
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "szdJD",
+                  "name": "logo_group",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": 6,
+                      "id": "vRkYd",
+                      "name": "logo_icon",
+                      "fill": "#E11D48",
+                      "width": 32,
+                      "height": 32
+                    },
+                    {
+                      "type": "text",
+                      "id": "CQjba",
+                      "name": "logo_text",
+                      "fill": "#1E293B",
+                      "content": "FastMoss",
+                      "fontFamily": "Inter",
+                      "fontSize": 20,
+                      "fontWeight": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "a1ZqF",
+                  "name": "sidebar_toggle",
+                  "width": 24,
+                  "height": 24,
+                  "fill": "#F1F5F9",
+                  "cornerRadius": 4,
+                  "padding": 4
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "mVj5l",
+              "name": "sidebar_content",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "padding": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "H5vGp",
+                  "name": "new_chat_btn",
+                  "width": "fill_container",
+                  "height": 40,
+                  "fill": "#F1F5F9",
+                  "cornerRadius": 8,
+                  "gap": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "9GmQy",
+                      "name": "new_chat_text",
+                      "fill": "#334155",
+                      "content": "开启新对话",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "rFxs1",
+                  "name": "history_section",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "krFAw",
+                      "name": "history_title",
+                      "fill": "#94A3B8",
+                      "content": "历史对话",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "GGzkY",
+                      "name": "history_item",
+                      "fill": "#475569",
+                      "content": "• 推荐10个美区适合...",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "NP59I",
+          "name": "Main Content Area",
+          "width": "fill_container",
+          "height": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": 1
+          },
+          "layout": "none",
+          "children": [
+            {
+              "type": "frame",
+              "id": "SNWwn",
+              "x": 0,
+              "y": 64,
+              "name": "Hero & Search Section:margin",
+              "width": 1040,
+              "height": 592,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "layout": "vertical",
+              "padding": [
+                0,
+                8
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "RhIyf",
+                  "name": "Hero & Search Section",
+                  "width": "fill_container",
+                  "height": 604,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "layout": "vertical",
+                  "gap": 40,
+                  "padding": [
+                    64,
+                    24,
+                    112,
+                    24
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "QFbxe",
+                      "name": "Container",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "layout": "vertical",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "9uxub",
+                          "name": "Heading 1",
+                          "width": "fill_container",
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "vertical",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "3ZY93",
+                              "name": "Text",
+                              "fill": "#0f172aff",
+                              "textGrowth": "fixed-width-height",
+                              "width": 275.25,
+                              "height": 48,
+                              "content": "FastMoss AI",
+                              "lineHeight": 1,
+                              "textAlign": "center",
+                              "textAlignVertical": "middle",
+                              "fontFamily": "Inter",
+                              "fontSize": 48,
+                              "fontWeight": "700",
+                              "letterSpacing": -1.2000000476837158
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "x3OMu",
+                          "name": "Container",
+                          "width": "fill_container",
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "vertical",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "redup",
+                              "name": "Text",
+                              "fill": "#64748bff",
+                              "textGrowth": "fixed-width-height",
+                              "width": 205.4199981689453,
+                              "height": 28,
+                              "content": "TikTok 电商生意运营助手",
+                              "lineHeight": 1.5555555555555556,
+                              "textAlign": "center",
+                              "textAlignVertical": "middle",
+                              "fontFamily": "WenQuanYi Zen Hei",
+                              "fontSize": 18,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "4WS2y",
+                      "name": "Input Box",
+                      "width": 768,
+                      "fill": "#ffffffff",
+                      "cornerRadius": 24,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#e2e8f0ff"
+                      },
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#0000000d",
+                        "offset": {
+                          "x": 0,
+                          "y": 4
+                        },
+                        "blur": 17.5
+                      },
+                      "layout": "vertical",
+                      "padding": 8,
+                      "layoutIncludeStroke": true,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "dXOgY",
+                          "name": "Container",
+                          "width": "fill_container",
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "vertical",
+                          "padding": 16,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "zlatE",
+                              "name": "Textarea",
+                              "clip": true,
+                              "width": "fill_container",
+                              "fill": "#ffffffff",
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              },
+                              "layout": "vertical",
+                              "padding": [
+                                8,
+                                12,
+                                28,
+                                12
+                              ],
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "M4nix",
+                                  "name": "Container",
+                                  "width": "fill_container",
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1
+                                  },
+                                  "layout": "vertical",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "LSiTE",
+                                      "name": "Text",
+                                      "fill": "#94a3b8ff",
+                                      "textGrowth": "fixed-width",
+                                      "width": "fill_container",
+                                      "content": "提及对象",
+                                      "lineHeight": 1.4285714285714286,
+                                      "textAlignVertical": "middle",
+                                      "fontFamily": "WenQuanYi Zen Hei",
+                                      "fontSize": 14,
+                                      "fontWeight": "500"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "c8QmN",
+                              "name": "Margin",
+                              "width": "fill_container",
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              },
+                              "layout": "vertical",
+                              "padding": [
+                                8,
+                                0,
+                                0,
+                                0
+                              ],
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "PirpG",
+                                  "name": "Container",
+                                  "width": "fill_container",
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1
+                                  },
+                                  "gap": 654,
+                                  "justifyContent": "space_between",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "nQceO",
+                                      "name": "Button",
+                                      "stroke": {
+                                        "align": "inside",
+                                        "thickness": 1
+                                      },
+                                      "layout": "vertical",
+                                      "padding": 4,
+                                      "children": [
+                                        {
+                                          "type": "frame",
+                                          "id": "GR8m0",
+                                          "name": "SVG",
+                                          "clip": true,
+                                          "width": 20,
+                                          "height": 20,
+                                          "stroke": {
+                                            "align": "inside",
+                                            "thickness": 1
+                                          },
+                                          "layout": "none",
+                                          "children": [
+                                            {
+                                              "type": "path",
+                                              "id": "NDKQb",
+                                              "x": 4.166666507720947,
+                                              "y": 2.5,
+                                              "name": "Vector",
+                                              "geometry": "M9.16667 3.33333c0 1.83972-1.49362 3.33333-3.33334 3.33334-1.83972 0-3.33333-1.49362-3.33333-3.33334 0-1.83972 1.49362-3.33333 3.33333-3.33333 1.83972 0 3.33333 1.49362 3.33334 3.33333l0 0m-3.33334 5.83334c-3.2195 0-5.83333 2.61383-5.83333 5.83333l11.66667 0c0-3.2195-2.61383-5.83333-5.83334-5.83333l0 0",
+                                              "width": 11.666666030883789,
+                                              "height": 15,
+                                              "stroke": {
+                                                "align": "center",
+                                                "thickness": 1.6666666269302368,
+                                                "join": "round",
+                                                "cap": "round",
+                                                "fill": {
+                                                  "type": "color",
+                                                  "color": "#94a3b8ff",
+                                                  "enabled": false
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "I1Ga2",
+                                      "name": "Button",
+                                      "fill": "#f1f5f9ff",
+                                      "cornerRadius": 9999,
+                                      "stroke": {
+                                        "align": "inside",
+                                        "thickness": 1
+                                      },
+                                      "layout": "vertical",
+                                      "padding": 8,
+                                      "children": [
+                                        {
+                                          "type": "frame",
+                                          "id": "AbUdH",
+                                          "name": "SVG",
+                                          "clip": true,
+                                          "width": 20,
+                                          "height": 20,
+                                          "stroke": {
+                                            "align": "inside",
+                                            "thickness": 1
+                                          },
+                                          "layout": "none",
+                                          "children": [
+                                            {
+                                              "type": "path",
+                                              "id": "MXdD4",
+                                              "x": 2.5,
+                                              "y": 4.166666507720947,
+                                              "name": "Vector",
+                                              "geometry": "",
+                                              "width": 15,
+                                              "height": 11.666666030883789,
+                                              "stroke": {
+                                                "align": "center",
+                                                "thickness": 1.6666666269302368,
+                                                "join": "round",
+                                                "cap": "round",
+                                                "fill": {
+                                                  "type": "color",
+                                                  "color": "#64748bff",
+                                                  "enabled": false
+                                                }
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "gyLyV",
+                      "name": "Container",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "padding": [
+                        7.5,
+                        0,
+                        0,
+                        0
+                      ],
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "A0EBW",
+                          "name": "Button",
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "gap": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "fdlvd",
+                              "name": "SVG",
+                              "clip": true,
+                              "width": 14,
+                              "height": 14,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              },
+                              "layout": "none",
+                              "children": [
+                                {
+                                  "type": "path",
+                                  "id": "CG75d",
+                                  "x": 2.3333332538604736,
+                                  "y": 2.3320093154907227,
+                                  "name": "Vector",
+                                  "geometry": "",
+                                  "width": 9.333333015441895,
+                                  "height": 9.334656715393066,
+                                  "stroke": {
+                                    "align": "center",
+                                    "thickness": 1.1666666269302368,
+                                    "join": "round",
+                                    "cap": "round",
+                                    "fill": {
+                                      "type": "color",
+                                      "color": "#94a3b8ff",
+                                      "enabled": false
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "mDz3b",
+                              "name": "Text",
+                              "fill": "#94a3b8ff",
+                              "textGrowth": "fixed-width-height",
+                              "width": 36,
+                              "height": 16,
+                              "content": "换一换",
+                              "lineHeight": 1.3333333333333333,
+                              "textAlign": "center",
+                              "textAlignVertical": "middle",
+                              "fontFamily": "WenQuanYi Zen Hei",
+                              "fontSize": 12,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "1dl4e",
+                      "name": "Quick Prompt Suggestions",
+                      "width": 768,
+                      "height": 116,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "cJZaG",
+                          "x": 0,
+                          "y": 0,
+                          "name": "Background+Border",
+                          "width": 376,
+                          "fill": "#ffffffff",
+                          "cornerRadius": 8,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "#e2e8f0ff"
+                          },
+                          "padding": 12,
+                          "alignItems": "center",
+                          "layoutIncludeStroke": true,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "f3Nk5",
+                              "name": "Container",
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              },
+                              "layout": "vertical",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "2a3KZ",
+                                  "name": "Text",
+                                  "fill": "#64748bff",
+                                  "textGrowth": "fixed-width-height",
+                                  "width": 346.4800109863281,
+                                  "height": 16,
+                                  "content": "推荐10个美区适合\"beauty and personal care\"类目的带货达人...",
+                                  "lineHeight": 1.3333333333333333,
+                                  "textAlignVertical": "middle",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "MVlPa",
+                          "x": 392,
+                          "y": 0,
+                          "name": "Background+Border",
+                          "width": 376,
+                          "fill": "#ffffffff",
+                          "cornerRadius": 8,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "#e2e8f0ff"
+                          },
+                          "padding": 12,
+                          "alignItems": "center",
+                          "layoutIncludeStroke": true,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "8AMB2",
+                              "name": "Container",
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              },
+                              "layout": "vertical",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "AOtA3",
+                                  "name": "Text",
+                                  "fill": "#64748bff",
+                                  "textGrowth": "fixed-width-height",
+                                  "width": 294.1400146484375,
+                                  "height": 16,
+                                  "content": "最近美国的美妆类目有哪些增长快、竞争压力小的机会?",
+                                  "lineHeight": 1.3333333333333333,
+                                  "textAlignVertical": "middle",
+                                  "fontFamily": "WenQuanYi Zen Hei",
+                                  "fontSize": 12,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "7FdHu",
+                          "x": 0,
+                          "y": 58,
+                          "name": "Background+Border",
+                          "width": 376,
+                          "fill": "#ffffffff",
+                          "cornerRadius": 8,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "#e2e8f0ff"
+                          },
+                          "padding": [
+                            20,
+                            12
+                          ],
+                          "alignItems": "center",
+                          "layoutIncludeStroke": true,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "GvXRa",
+                              "name": "Container",
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              },
+                              "layout": "vertical",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "J080u",
+                                  "name": "Text",
+                                  "fill": "#64748bff",
+                                  "textGrowth": "fixed-width-height",
+                                  "width": 318.3399963378906,
+                                  "height": 16,
+                                  "content": "分析竞对店铺 @店铺 的近期的销量趋势以及销量增长的原因",
+                                  "lineHeight": 1.3333333333333333,
+                                  "textAlignVertical": "middle",
+                                  "fontFamily": "WenQuanYi Zen Hei",
+                                  "fontSize": 12,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "3HTBi",
+                          "x": 392,
+                          "y": 58,
+                          "name": "Background+Border",
+                          "width": 376,
+                          "fill": "#ffffffff",
+                          "cornerRadius": 8,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1,
+                            "fill": "#e2e8f0ff"
+                          },
+                          "gap": 8,
+                          "padding": 12,
+                          "alignItems": "center",
+                          "layoutIncludeStroke": true,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "f3EI6",
+                              "name": "Container",
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              },
+                              "layout": "vertical",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "9dWjw",
+                                  "name": "Text",
+                                  "fill": "#f97316ff",
+                                  "textGrowth": "fixed-width-height",
+                                  "width": 4.389999866485596,
+                                  "height": 16,
+                                  "content": "🔥",
+                                  "lineHeight": 1.3333333333333333,
+                                  "textAlignVertical": "middle",
+                                  "fontFamily": "Liberation Sans",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "QDaXE",
+                              "name": "Container",
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              },
+                              "layout": "vertical",
+                              "padding": [
+                                0,
+                                6.550000190734863,
+                                0,
+                                0
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "4pnmp",
+                                  "name": "Text",
+                                  "fill": "#64748bff",
+                                  "textGrowth": "fixed-width-height",
+                                  "width": 331.05999755859375,
+                                  "height": 32,
+                                  "content": "拆解竞品广告视频 @视频 的hook/节奏/卖点，并提供仿写的脚\n本",
+                                  "lineHeight": 1.3333333333333333,
+                                  "textAlignVertical": "middle",
+                                  "fontFamily": "WenQuanYi Zen Hei",
+                                  "fontSize": 12,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "RP9kj",
+              "x": 0,
+              "y": 686,
+              "name": "Section - Tabs Navigation:margin",
+              "width": 1040,
+              "height": 74,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "layout": "vertical",
+              "padding": [
+                0,
+                24,
+                32,
+                24
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Zcdta",
+                  "name": "Section - Tabs Navigation",
+                  "width": "fill_container",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "#e2e8f0ff"
+                  },
+                  "gap": 40,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "layoutIncludeStroke": true,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "kNyw7",
+                      "name": "Button",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 2
+                        },
+                        "fill": "#e11d48ff"
+                      },
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        8,
+                        12,
+                        8
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "layoutIncludeStroke": true,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Ka1So",
+                          "name": "Text",
+                          "fill": "#e11d48ff",
+                          "textGrowth": "fixed-width-height",
+                          "width": 28,
+                          "height": 20,
+                          "content": "全部",
+                          "lineHeight": 1.4285714285714286,
+                          "textAlign": "center",
+                          "textAlignVertical": "middle",
+                          "fontFamily": "WenQuanYi Zen Hei",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "aaeDX",
+                      "name": "Button",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        8,
+                        12,
+                        8
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "fN745",
+                          "name": "Text",
+                          "fill": "#64748bff",
+                          "textGrowth": "fixed-width-height",
+                          "width": 56,
+                          "height": 20,
+                          "content": "大盘洞察",
+                          "lineHeight": 1.4285714285714286,
+                          "textAlign": "center",
+                          "textAlignVertical": "middle",
+                          "fontFamily": "WenQuanYi Zen Hei",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ICqAN",
+                      "name": "Button",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        8,
+                        12,
+                        8
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "BPtrm",
+                          "name": "Text",
+                          "fill": "#64748bff",
+                          "textGrowth": "fixed-width-height",
+                          "width": 56,
+                          "height": 20,
+                          "content": "竞对分析",
+                          "lineHeight": 1.4285714285714286,
+                          "textAlign": "center",
+                          "textAlignVertical": "middle",
+                          "fontFamily": "WenQuanYi Zen Hei",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "FrG9f",
+                      "name": "Button",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        8,
+                        12,
+                        8
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "oGPt8",
+                          "name": "Text",
+                          "fill": "#64748bff",
+                          "textGrowth": "fixed-width-height",
+                          "width": 56,
+                          "height": 20,
+                          "content": "达人运营",
+                          "lineHeight": 1.4285714285714286,
+                          "textAlign": "center",
+                          "textAlignVertical": "middle",
+                          "fontFamily": "WenQuanYi Zen Hei",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "hVgrP",
+                      "name": "Button",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        8,
+                        12,
+                        8
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Cc3zy",
+                          "name": "Text",
+                          "fill": "#64748bff",
+                          "textGrowth": "fixed-width-height",
+                          "width": 56,
+                          "height": 20,
+                          "content": "爆款内容",
+                          "lineHeight": 1.4285714285714286,
+                          "textAlign": "center",
+                          "textAlignVertical": "middle",
+                          "fontFamily": "WenQuanYi Zen Hei",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "c0Zti",
+                      "name": "Button",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        8,
+                        12,
+                        8
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "weF6h",
+                          "name": "Text",
+                          "fill": "#64748bff",
+                          "textGrowth": "fixed-width-height",
+                          "width": 56,
+                          "height": 20,
+                          "content": "投流分析",
+                          "lineHeight": 1.4285714285714286,
+                          "textAlign": "center",
+                          "textAlignVertical": "middle",
+                          "fontFamily": "WenQuanYi Zen Hei",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "kYKhD",
+                      "name": "Button",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        8,
+                        12,
+                        8
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "pU3LZ",
+                          "name": "Text",
+                          "fill": "#64748bff",
+                          "textGrowth": "fixed-width-height",
+                          "width": 56,
+                          "height": 20,
+                          "content": "常见问题",
+                          "lineHeight": 1.4285714285714286,
+                          "textAlign": "center",
+                          "textAlignVertical": "middle",
+                          "fontFamily": "WenQuanYi Zen Hei",
+                          "fontSize": 14,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ED9EZ",
+              "x": 0,
+              "y": 748,
+              "name": "Section - Information Cards Grid",
+              "width": 1040,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1
+              },
+              "layout": "vertical",
+              "padding": [
+                0,
+                24,
+                80,
+                24
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "hcJ5S",
+                  "name": "Container",
+                  "width": "fill_container",
+                  "height": 616.8099975585938,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "BtCqK",
+                      "x": 0,
+                      "y": 0,
+                      "name": "Card 1",
+                      "clip": true,
+                      "width": 314.6600036621094,
+                      "fill": "#ffffffff",
+                      "cornerRadius": 16,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#e2e8f0ff"
+                      },
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#0000000d",
+                        "offset": {
+                          "x": 0,
+                          "y": 4
+                        },
+                        "blur": 17.5
+                      },
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        0,
+                        24,
+                        0
+                      ],
+                      "layoutIncludeStroke": true,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "bJQFN",
+                          "name": "Container",
+                          "width": "fill_container",
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "vertical",
+                          "gap": 4,
+                          "padding": 20,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "n87El",
+                              "name": "Heading 3",
+                              "width": "fill_container",
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              },
+                              "layout": "vertical",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "xMmGF",
+                                  "name": "Text",
+                                  "fill": "#0f172aff",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "最近TikTok美区的美妆类目机会分析",
+                                  "lineHeight": 1.5,
+                                  "textAlignVertical": "middle",
+                                  "fontFamily": "WenQuanYi Zen Hei",
+                                  "fontSize": 16,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "8kJLg",
+                              "name": "Container",
+                              "width": "fill_container",
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              },
+                              "layout": "vertical",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "T904h",
+                                  "name": "Text",
+                                  "fill": "#94a3b8ff",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "大盘洞察",
+                                  "lineHeight": 1.3333333333333333,
+                                  "textAlignVertical": "middle",
+                                  "fontFamily": "WenQuanYi Zen Hei",
+                                  "fontSize": 12,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "4aYKQ",
+                              "name": "Background+Border",
+                              "clip": true,
+                              "width": "fill_container",
+                              "fill": "#fff1f2ff",
+                              "cornerRadius": 12,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "#ffe4e6ff"
+                              },
+                              "layout": "vertical",
+                              "padding": [
+                                12,
+                                0,
+                                0,
+                                0
+                              ],
+                              "justifyContent": "center",
+                              "layoutIncludeStroke": true,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "3RhGh",
+                                  "name": "Insight Chart",
+                                  "clip": true,
+                                  "width": "fill_container",
+                                  "height": 168.41000366210938,
+                                  "fill": {
+                                    "type": "image",
+                                    "enabled": true,
+                                    "url": "",
+                                    "mode": "stretch"
+                                  },
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1
+                                  },
+                                  "layout": "none"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "3vdst",
+                      "x": 338.6600036621094,
+                      "y": 0,
+                      "name": "Card 2",
+                      "clip": true,
+                      "width": 314.6700134277344,
+                      "fill": "#ffffffff",
+                      "cornerRadius": 16,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#e2e8f0ff"
+                      },
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#0000000d",
+                        "offset": {
+                          "x": 0,
+                          "y": 4
+                        },
+                        "blur": 17.5
+                      },
+                      "layout": "vertical",
+                      "layoutIncludeStroke": true,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "z1xOM",
+                          "name": "Container",
+                          "width": "fill_container",
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "vertical",
+                          "gap": 4,
+                          "padding": 20,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "gGEkI",
+                              "name": "Heading 3",
+                              "width": "fill_container",
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              },
+                              "layout": "vertical",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "8CVD5",
+                                  "name": "Text",
+                                  "fill": "#0f172aff",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "TikTok东南亚哪个国家适合现在入\n驻，官方政策利好？",
+                                  "lineHeight": 1.5,
+                                  "textAlignVertical": "middle",
+                                  "fontFamily": "WenQuanYi Zen Hei",
+                                  "fontSize": 16,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "Dgz3O",
+                              "name": "Container",
+                              "width": "fill_container",
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              },
+                              "layout": "vertical",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "Ty3kU",
+                                  "name": "Text",
+                                  "fill": "#94a3b8ff",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "大盘洞察",
+                                  "lineHeight": 1.3333333333333333,
+                                  "textAlignVertical": "middle",
+                                  "fontFamily": "WenQuanYi Zen Hei",
+                                  "fontSize": 12,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "jID2j",
+                              "name": "Background+Border",
+                              "clip": true,
+                              "width": "fill_container",
+                              "fill": "#f8fafcff",
+                              "cornerRadius": 12,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "#f1f5f9ff"
+                              },
+                              "layout": "vertical",
+                              "padding": [
+                                12,
+                                0,
+                                0,
+                                0
+                              ],
+                              "justifyContent": "center",
+                              "layoutIncludeStroke": true,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "QvsnT",
+                                  "name": "Region Report",
+                                  "clip": true,
+                                  "width": "fill_container",
+                                  "height": 168.41000366210938,
+                                  "fill": {
+                                    "type": "image",
+                                    "enabled": true,
+                                    "url": "",
+                                    "mode": "stretch"
+                                  },
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1
+                                  },
+                                  "layout": "none"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "QeO1j",
+                      "x": 677.3300170898438,
+                      "y": 0,
+                      "name": "Card 3",
+                      "clip": true,
+                      "width": 314.6600036621094,
+                      "fill": "#ffffffff",
+                      "cornerRadius": 16,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#e2e8f0ff"
+                      },
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#0000000d",
+                        "offset": {
+                          "x": 0,
+                          "y": 4
+                        },
+                        "blur": 17.5
+                      },
+                      "layout": "vertical",
+                      "layoutIncludeStroke": true,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "GD9lL",
+                          "name": "Container",
+                          "width": "fill_container",
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "vertical",
+                          "gap": 4,
+                          "padding": 20,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "f7YZF",
+                              "name": "Heading 3",
+                              "width": "fill_container",
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              },
+                              "layout": "vertical",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "AWXBT",
+                                  "name": "Text",
+                                  "fill": "#0f172aff",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "TikTok店铺 Tarte Cosmetics 近期运\n营表现情况",
+                                  "lineHeight": 1.5,
+                                  "textAlignVertical": "middle",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 16,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "dr8iF",
+                              "name": "Container",
+                              "width": "fill_container",
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              },
+                              "layout": "vertical",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "5P4H0",
+                                  "name": "Text",
+                                  "fill": "#94a3b8ff",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "竞对分析",
+                                  "lineHeight": 1.3333333333333333,
+                                  "textAlignVertical": "middle",
+                                  "fontFamily": "WenQuanYi Zen Hei",
+                                  "fontSize": 12,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "xFFMh",
+                              "name": "Background+Border",
+                              "clip": true,
+                              "width": "fill_container",
+                              "fill": "#f8fafcff",
+                              "cornerRadius": 12,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "#f1f5f9ff"
+                              },
+                              "layout": "vertical",
+                              "padding": [
+                                12,
+                                0,
+                                0,
+                                0
+                              ],
+                              "justifyContent": "center",
+                              "layoutIncludeStroke": true,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "OPhmP",
+                                  "name": "Store Performance",
+                                  "clip": true,
+                                  "width": "fill_container",
+                                  "height": 168.41000366210938,
+                                  "fill": {
+                                    "type": "image",
+                                    "enabled": true,
+                                    "url": "",
+                                    "mode": "stretch"
+                                  },
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1
+                                  },
+                                  "layout": "none"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "14qiu",
+                      "x": 0,
+                      "y": 320.4100036621094,
+                      "name": "Card 4",
+                      "clip": true,
+                      "width": 314.6600036621094,
+                      "fill": "#ffffffff",
+                      "cornerRadius": 16,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#e2e8f0ff"
+                      },
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#0000000d",
+                        "offset": {
+                          "x": 0,
+                          "y": 4
+                        },
+                        "blur": 17.5
+                      },
+                      "layout": "vertical",
+                      "padding": [
+                        0,
+                        0,
+                        24,
+                        0
+                      ],
+                      "layoutIncludeStroke": true,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "8e6Rk",
+                          "name": "Container",
+                          "width": "fill_container",
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "vertical",
+                          "gap": 4,
+                          "padding": 20,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "RY8n8",
+                              "name": "Heading 3",
+                              "width": "fill_container",
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              },
+                              "layout": "vertical",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "Gk2ir",
+                                  "name": "Text",
+                                  "fill": "#0f172aff",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "TikTok商品运营策略分析",
+                                  "lineHeight": 1.5,
+                                  "textAlignVertical": "middle",
+                                  "fontFamily": "WenQuanYi Zen Hei",
+                                  "fontSize": 16,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "UcYqc",
+                              "name": "Container",
+                              "width": "fill_container",
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              },
+                              "layout": "vertical",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "uzmLb",
+                                  "name": "Text",
+                                  "fill": "#94a3b8ff",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "竞对分析",
+                                  "lineHeight": 1.3333333333333333,
+                                  "textAlignVertical": "middle",
+                                  "fontFamily": "WenQuanYi Zen Hei",
+                                  "fontSize": 12,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "97cOc",
+                              "name": "Background+Border",
+                              "clip": true,
+                              "width": "fill_container",
+                              "fill": "#eff6ffff",
+                              "cornerRadius": 12,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "#dbeafeff"
+                              },
+                              "layout": "vertical",
+                              "padding": [
+                                12,
+                                0,
+                                0,
+                                0
+                              ],
+                              "justifyContent": "center",
+                              "layoutIncludeStroke": true,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "AMLRp",
+                                  "name": "Product Strategy",
+                                  "clip": true,
+                                  "width": "fill_container",
+                                  "height": 168.41000366210938,
+                                  "fill": {
+                                    "type": "image",
+                                    "enabled": true,
+                                    "url": "",
+                                    "mode": "stretch"
+                                  },
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1
+                                  },
+                                  "layout": "none"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "dGTJp",
+                      "x": 338.6600036621094,
+                      "y": 320.4100036621094,
+                      "name": "Card 5",
+                      "clip": true,
+                      "width": 314.6700134277344,
+                      "fill": "#ffffffff",
+                      "cornerRadius": 16,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#e2e8f0ff"
+                      },
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#0000000d",
+                        "offset": {
+                          "x": 0,
+                          "y": 4
+                        },
+                        "blur": 17.5
+                      },
+                      "layout": "vertical",
+                      "layoutIncludeStroke": true,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "N0em9",
+                          "name": "Container",
+                          "width": "fill_container",
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "vertical",
+                          "gap": 4,
+                          "padding": 20,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "FIhqd",
+                              "name": "Heading 3",
+                              "width": "fill_container",
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              },
+                              "layout": "vertical",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "W0QxE",
+                                  "name": "Text",
+                                  "fill": "#0f172aff",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "TikTok美区\"beauty & personal\ncare\"类目Top 10的带货达人推荐",
+                                  "lineHeight": 1.5,
+                                  "textAlignVertical": "middle",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 16,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "4ZOGy",
+                              "name": "Container",
+                              "width": "fill_container",
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              },
+                              "layout": "vertical",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "sLKgH",
+                                  "name": "Text",
+                                  "fill": "#94a3b8ff",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "达人运营",
+                                  "lineHeight": 1.3333333333333333,
+                                  "textAlignVertical": "middle",
+                                  "fontFamily": "WenQuanYi Zen Hei",
+                                  "fontSize": 12,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "7MaPH",
+                              "name": "Background+Border",
+                              "clip": true,
+                              "width": "fill_container",
+                              "fill": "#fff7edff",
+                              "cornerRadius": 12,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "#ffedd5ff"
+                              },
+                              "layout": "vertical",
+                              "padding": [
+                                12,
+                                0,
+                                0,
+                                0
+                              ],
+                              "justifyContent": "center",
+                              "layoutIncludeStroke": true,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "7p3ah",
+                                  "name": "Influencer Recommendations",
+                                  "clip": true,
+                                  "width": "fill_container",
+                                  "height": 168.41000366210938,
+                                  "fill": {
+                                    "type": "image",
+                                    "enabled": true,
+                                    "url": "",
+                                    "mode": "stretch"
+                                  },
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1
+                                  },
+                                  "layout": "none"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "dX9dT",
+                      "x": 677.3300170898438,
+                      "y": 320.4100036621094,
+                      "name": "Card 6",
+                      "clip": true,
+                      "width": 314.6600036621094,
+                      "fill": "#ffffffff",
+                      "cornerRadius": 16,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#e2e8f0ff"
+                      },
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#0000000d",
+                        "offset": {
+                          "x": 0,
+                          "y": 4
+                        },
+                        "blur": 17.5
+                      },
+                      "layout": "vertical",
+                      "layoutIncludeStroke": true,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "u2Tyo",
+                          "name": "Container",
+                          "width": "fill_container",
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "vertical",
+                          "gap": 4,
+                          "padding": 20,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "SowPt",
+                              "name": "Heading 3",
+                              "width": "fill_container",
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              },
+                              "layout": "vertical",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "J6CdP",
+                                  "name": "Text",
+                                  "fill": "#0f172aff",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "分析TikTok竞对店铺最近有哪些新合\n作达人",
+                                  "lineHeight": 1.5,
+                                  "textAlignVertical": "middle",
+                                  "fontFamily": "WenQuanYi Zen Hei",
+                                  "fontSize": 16,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "UAotn",
+                              "name": "Container",
+                              "width": "fill_container",
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1
+                              },
+                              "layout": "vertical",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "f4FXB",
+                                  "name": "Text",
+                                  "fill": "#94a3b8ff",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "达人运营",
+                                  "lineHeight": 1.3333333333333333,
+                                  "textAlignVertical": "middle",
+                                  "fontFamily": "WenQuanYi Zen Hei",
+                                  "fontSize": 12,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "h8L7f",
+                              "name": "Background+Border",
+                              "clip": true,
+                              "width": "fill_container",
+                              "fill": "#eef2ffff",
+                              "cornerRadius": 12,
+                              "stroke": {
+                                "align": "inside",
+                                "thickness": 1,
+                                "fill": "#e0e7ffff"
+                              },
+                              "layout": "vertical",
+                              "padding": [
+                                12,
+                                0,
+                                0,
+                                0
+                              ],
+                              "justifyContent": "center",
+                              "layoutIncludeStroke": true,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "C3Ndk",
+                                  "name": "Collaboration Analysis",
+                                  "clip": true,
+                                  "width": "fill_container",
+                                  "height": 168.41000366210938,
+                                  "fill": {
+                                    "type": "image",
+                                    "enabled": true,
+                                    "url": "",
+                                    "mode": "stretch"
+                                  },
+                                  "stroke": {
+                                    "align": "inside",
+                                    "thickness": 1
+                                  },
+                                  "layout": "none"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "RInZz",
+              "x": 0,
+              "y": 0,
+              "name": "Top Navigation Header",
+              "width": 1178,
+              "height": 64,
+              "fill": "#ffffffa3",
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "bottom": 1
+                },
+                "fill": "#f1f5f9ff"
+              },
+              "effect": {
+                "type": "background_blur",
+                "radius": 10.5
+              },
+              "padding": [
+                0,
+                32
+              ],
+              "justifyContent": "end",
+              "alignItems": "center",
+              "layoutIncludeStroke": true,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "jxlPq",
+                  "name": "Container",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1
+                  },
+                  "gap": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "moyMk",
+                      "name": "Container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1
+                      },
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "a1vRR",
+                          "name": "User Profile",
+                          "clip": true,
+                          "width": 32,
+                          "height": 32,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "",
+                            "mode": "stretch"
+                          },
+                          "cornerRadius": 9999,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "none"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "x37jC",
+                          "name": "Container",
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "vertical",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "aFWzO",
+                              "name": "Text",
+                              "fill": "#1e293bff",
+                              "textGrowth": "fixed-width-height",
+                              "width": 75.97000122070312,
+                              "height": 20,
+                              "content": "FM11519112",
+                              "lineHeight": 1.4285714285714286,
+                              "textAlignVertical": "middle",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "OGsKi",
+                      "name": "Background+Border",
+                      "fill": "#fff1f2ff",
+                      "cornerRadius": 4,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "#ffe4e6ff"
+                      },
+                      "gap": 4,
+                      "padding": [
+                        4,
+                        8
+                      ],
+                      "alignItems": "center",
+                      "layoutIncludeStroke": true,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "lSwCN",
+                          "name": "Container",
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "vertical",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "cwZFl",
+                              "name": "Text",
+                              "fill": "#e11d48ff",
+                              "textGrowth": "fixed-width-height",
+                              "width": 48,
+                              "height": 16,
+                              "content": "普通会员",
+                              "lineHeight": 1.3333333333333333,
+                              "textAlignVertical": "middle",
+                              "fontFamily": "WenQuanYi Zen Hei",
+                              "fontSize": 12,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "rCXKt",
+                          "name": "SVG",
+                          "clip": true,
+                          "width": 12,
+                          "height": 12,
+                          "stroke": {
+                            "align": "inside",
+                            "thickness": 1
+                          },
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "path",
+                              "id": "9jNH5",
+                              "x": 2.5,
+                              "y": 4.5,
+                              "name": "Vector",
+                              "geometry": "",
+                              "width": 7,
+                              "height": 3.5,
+                              "stroke": {
+                                "align": "center",
+                                "thickness": 1,
+                                "join": "round",
+                                "cap": "round",
+                                "fill": {
+                                  "type": "color",
+                                  "color": "#e11d48ff",
+                                  "enabled": false
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
