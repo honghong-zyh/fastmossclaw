@@ -1,3 +1,5 @@
+import { showToast } from './toast.js';
+
 const platforms = [
   { id: 'console',   name: 'Console',            type: '内置', enabled: true,  prefix: '未设置', guideUrl: '', fields: [] },
   { id: 'dingtalk',  name: 'DingTalk',            type: '内置', enabled: true,  prefix: '未设置', guideUrl: 'https://molili.dangbei.com/dingtalk.html', fields: ['App Key', 'App Secret'] },
@@ -62,15 +64,28 @@ export function renderPlatformGrid() {
           <span class="font-semibold text-sm text-slate-900">${p.name}</span>
           <span class="text-xs px-1.5 py-0.5 rounded bg-blue-50 text-blue-600 font-medium">${p.type}</span>
         </div>
-        <div class="flex items-center gap-1.5">
+        <button class="platform-toggle flex items-center gap-1.5 px-2 py-1 rounded-md hover:bg-slate-100 transition-colors" data-toggle-platform="${p.id}">
           <span class="w-2 h-2 rounded-full ${p.enabled ? 'bg-green-500' : 'bg-gray-400'}"></span>
           <span class="text-xs ${p.enabled ? 'text-green-600' : 'text-slate-400'}">${p.enabled ? '已启用' : '已禁用'}</span>
-        </div>
+          <svg class="h-3 w-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
       </div>
       <p class="text-xs text-slate-400 mb-1">机器人前缀: ${p.prefix}</p>
       <p class="text-xs text-blue-500 hover:text-blue-600 mt-2">点击卡片进行编辑</p>
     </div>
   `).join('');
+
+  grid.querySelectorAll('.platform-toggle').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const id = btn.getAttribute('data-toggle-platform');
+      togglePlatform(id);
+      renderPlatformGrid();
+      const list = getPlatforms();
+      const p = list.find(x => x.id === id);
+      if (p) showToast(p.enabled ? `已启用 ${p.name}` : `已禁用 ${p.name}`);
+    });
+  });
 
   grid.querySelectorAll('.platform-card').forEach(card => {
     card.addEventListener('click', () => {

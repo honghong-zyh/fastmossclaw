@@ -1,6 +1,7 @@
 import { showToast } from './toast.js';
 import { navigateTo } from './navigation.js';
 import { showMentionModal } from './mention.js';
+import { skillsData } from '../data/skills.js';
 
 export function sendMessage() {
   const input = document.getElementById('chat-input');
@@ -68,6 +69,71 @@ function switchTab(btn) {
   });
 }
 
+function showSkillsPicker() {
+  const picker = document.getElementById('skills-picker');
+  if (!picker) return;
+
+  const btn = document.querySelector('[data-action="open-skills-picker"]');
+  if (btn) {
+    const rect = btn.getBoundingClientRect();
+    picker.style.left = rect.left + 'px';
+    picker.style.bottom = (window.innerHeight - rect.top + 8) + 'px';
+    picker.style.top = 'auto';
+  }
+
+  picker.classList.remove('hidden');
+  renderSkillsPicker();
+  document.getElementById('skills-picker-search')?.focus();
+}
+
+function hideSkillsPicker() {
+  document.getElementById('skills-picker')?.classList.add('hidden');
+}
+
+function renderSkillsPicker(search = '') {
+  const list = document.getElementById('skills-picker-list');
+  if (!list) return;
+
+  const enabledSkills = skillsData.filter(s => {
+    const matchSearch = s.name.toLowerCase().includes(search.toLowerCase()) || s.desc.toLowerCase().includes(search.toLowerCase());
+    return matchSearch;
+  });
+
+  if (enabledSkills.length === 0) {
+    list.innerHTML = '<p class="text-xs text-slate-400 text-center py-4">暂无技能</p>';
+    return;
+  }
+
+  list.innerHTML = enabledSkills.map(s => `
+    <button class="w-full text-left flex items-center gap-2.5 p-2 rounded-lg hover:bg-slate-50 transition-colors" data-action="select-skill" data-skill-name="${s.name}">
+      <div class="w-7 h-7 rounded-md bg-gradient-to-br from-violet-100 to-blue-100 flex items-center justify-center flex-shrink-0">
+        <svg class="h-3.5 w-3.5 text-violet-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+      </div>
+      <div class="flex-1 min-w-0">
+        <span class="text-xs font-medium text-slate-800 block truncate">${s.name}</span>
+        <span class="text-xs text-slate-400 block truncate">${s.desc}</span>
+      </div>
+      ${s.official ? '<span class="text-blue-500 flex-shrink-0"><svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg></span>' : ''}
+    </button>
+  `).join('');
+
+  list.querySelectorAll('[data-action="select-skill"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const name = btn.getAttribute('data-skill-name');
+      const input = document.getElementById('chat-input');
+      if (input) {
+        const tag = `/${name} `;
+        const pos = input.selectionStart || input.value.length;
+        input.value = input.value.substring(0, pos) + tag + input.value.substring(pos);
+        input.focus();
+        const newPos = pos + tag.length;
+        input.setSelectionRange(newPos, newPos);
+      }
+      hideSkillsPicker();
+    });
+  });
+}
+
 export function initChat() {
   const input = document.getElementById('chat-input');
   if (input) {
@@ -90,6 +156,35 @@ export function initChat() {
       showMentionModal(insertMentionTag);
     });
   }
+
+  const skillsPickerBtn = document.querySelector('[data-action="open-skills-picker"]');
+  if (skillsPickerBtn) {
+    skillsPickerBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const picker = document.getElementById('skills-picker');
+      if (picker && !picker.classList.contains('hidden')) {
+        hideSkillsPicker();
+      } else {
+        showSkillsPicker();
+      }
+    });
+  }
+
+  const skillsPickerSearch = document.getElementById('skills-picker-search');
+  if (skillsPickerSearch) {
+    skillsPickerSearch.addEventListener('input', () => renderSkillsPicker(skillsPickerSearch.value));
+  }
+
+  document.querySelector('[data-action="go-to-skills-page"]')?.addEventListener('click', () => {
+    hideSkillsPicker();
+    navigateTo('skills');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('#skills-picker') && !e.target.closest('[data-action="open-skills-picker"]')) {
+      hideSkillsPicker();
+    }
+  });
 
   const newChatBtn = document.querySelector('[data-action="new-chat"]');
   if (newChatBtn) {

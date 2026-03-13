@@ -1,6 +1,7 @@
 import { importSkill, uploadFile } from './skills.js';
 import { renderPlatformGrid } from './remote.js';
 import { showToast } from './toast.js';
+import { navigateTo } from './navigation.js';
 
 function showModal(id) {
   document.getElementById(id)?.classList.remove('hidden');
@@ -27,13 +28,17 @@ function setupAddMenu() {
     menu.classList.add('hidden');
     showModal('import-modal');
   });
-  menu.querySelector('[data-action="show-upload"]')?.addEventListener('click', () => {
-    menu.classList.add('hidden');
-    showModal('upload-modal');
-  });
   menu.querySelector('[data-action="create-skill"]')?.addEventListener('click', () => {
     menu.classList.add('hidden');
-    showToast('正在打开技能创建向导...');
+    navigateTo('home');
+    setTimeout(() => {
+      const input = document.getElementById('chat-input');
+      if (input) {
+        input.value = '帮我一起使用 /skill-creator 创建一个技能。技能应该做';
+        input.focus();
+        input.setSelectionRange(input.value.length, input.value.length);
+      }
+    }, 100);
   });
 }
 
@@ -47,15 +52,21 @@ function setupImportModal() {
   modal.querySelector('[data-action="confirm-import"]')?.addEventListener('click', () => {
     if (importSkill()) hideModal('import-modal');
   });
-}
 
-function setupUploadModal() {
-  const modal = document.getElementById('upload-modal');
-  if (!modal) return;
+  // Tab switching within unified import modal
+  modal.querySelectorAll('.import-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.getAttribute('data-import-tab');
+      modal.querySelectorAll('.import-tab').forEach(t => {
+        t.className = 'import-tab pb-2.5 px-4 text-sm font-medium text-slate-400 hover:text-slate-600';
+      });
+      tab.className = 'import-tab active pb-2.5 px-4 text-sm font-semibold text-rose-600 border-b-2 border-rose-600';
+      document.getElementById('import-panel-url').classList.toggle('hidden', target !== 'url');
+      document.getElementById('import-panel-upload').classList.toggle('hidden', target !== 'upload');
+    });
+  });
 
-  modal.querySelector('.modal-overlay')?.addEventListener('click', () => hideModal('upload-modal'));
-  modal.querySelector('[data-action="close-modal"]')?.addEventListener('click', () => hideModal('upload-modal'));
-
+  // Upload zone within import modal
   const zone = document.getElementById('upload-zone');
   const fileInput = document.getElementById('file-input');
 
@@ -74,14 +85,14 @@ function setupUploadModal() {
       const file = e.dataTransfer.files[0];
       if (file) {
         uploadFile(file);
-        hideModal('upload-modal');
+        hideModal('import-modal');
       }
     });
     fileInput.addEventListener('change', (e) => {
       const file = e.target.files[0];
       if (file) {
         uploadFile(file);
-        hideModal('upload-modal');
+        hideModal('import-modal');
       }
     });
   }
@@ -136,6 +147,5 @@ function setupBindModal() {
 export function initModals() {
   setupAddMenu();
   setupImportModal();
-  setupUploadModal();
   setupBindModal();
 }
