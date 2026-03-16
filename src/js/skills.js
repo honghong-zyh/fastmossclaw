@@ -4,6 +4,8 @@ import { skillsData } from '../data/skills.js';
 
 let currentSkillMenuId = null;
 let currentFilter = 'all';
+let currentExampleSkillName = '';
+let currentExamplePrompt = '';
 
 const officialSkillsCatalog = [
   { id: 'excel-generator', name: 'excel-generator', desc: '专业的 Excel 电子表格创建工具，注重美观与数据可视化。', tag: '官方' },
@@ -40,9 +42,9 @@ export function renderSkills() {
   grid.innerHTML = filtered
     .map(
       (s) => `
-    <div class="bg-white border border-slate-200 rounded-xl p-4 hover:border-slate-300 transition-colors relative" data-skill-id="${s.id}">
+    <div class="bg-white border border-slate-200 rounded-xl p-4 hover:border-slate-300 transition-colors relative" data-skill-id="${s.id}" data-cursor-element-id="cursor-el-${s.id}">
       <div class="flex items-start justify-between mb-2">
-        <div class="flex-1 min-w-0">
+        <div class="flex-1 min-w-0 cursor-pointer" data-action="open-skill-detail" data-skill-id="${s.id}">
           <div class="flex items-center gap-2">
             <h4 class="font-semibold text-sm text-slate-900 truncate">${s.name}</h4>
             ${s.official ? '<span class="text-blue-500 flex-shrink-0"><svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg></span>' : ''}
@@ -72,7 +74,8 @@ export function renderSkills() {
 
 function bindSkillEvents() {
   document.querySelectorAll('[data-action="toggle-skill"]').forEach((el) => {
-    el.addEventListener('click', () => {
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
       const id = parseInt(el.dataset.skillId, 10);
       toggleSkill(id);
     });
@@ -83,6 +86,14 @@ function bindSkillEvents() {
       e.stopPropagation();
       const id = parseInt(el.dataset.skillId, 10);
       showSkillMenu(e, id);
+    });
+  });
+
+  document.querySelectorAll('[data-action="open-skill-detail"]').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const id = parseInt(el.dataset.skillId, 10);
+      openSkillDetail(id);
     });
   });
 }
@@ -117,6 +128,121 @@ function hideSkillMenu() {
   if (menu) menu.classList.add('hidden');
   currentSkillMenuId = null;
 }
+
+/* ---- Skill Detail Modal ---- */
+
+function openSkillDetail(id) {
+  const skill = skillsData.find((s) => s.id === id);
+  if (!skill || !skill.detail) return;
+
+  const d = skill.detail;
+  const modal = document.getElementById('skill-detail-modal');
+  if (!modal) return;
+
+  document.getElementById('skill-detail-name').textContent = skill.name;
+  document.getElementById('skill-detail-date').textContent = `更新于 ${skill.date}`;
+  document.getElementById('skill-detail-what').textContent = d.what;
+
+  const goodForEl = document.getElementById('skill-detail-good-for');
+  goodForEl.innerHTML = d.goodFor
+    .map(
+      (t) => `<li class="scenario-item">
+      <svg class="scenario-icon h-4 w-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+      <span>${t}</span>
+    </li>`
+    )
+    .join('');
+
+  const notForEl = document.getElementById('skill-detail-not-for');
+  notForEl.innerHTML = d.notFor
+    .map(
+      (t) => `<li class="scenario-item">
+      <svg class="scenario-icon h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      <span>${t}</span>
+    </li>`
+    )
+    .join('');
+
+  const inputsEl = document.getElementById('skill-detail-inputs');
+  inputsEl.innerHTML = d.inputs
+    .map(
+      (i) => `<div class="skill-io-item">
+      <div class="io-label">${i.label}</div>
+      <div class="io-example">${i.example}</div>
+    </div>`
+    )
+    .join('');
+
+  const outputsEl = document.getElementById('skill-detail-outputs');
+  outputsEl.innerHTML = d.outputs
+    .map(
+      (o) => `<div class="skill-io-item">
+      <div class="io-label">${o.label}</div>
+      <div class="io-example">${o.example}</div>
+    </div>`
+    )
+    .join('');
+
+  const examplesEl = document.getElementById('skill-detail-examples');
+  examplesEl.innerHTML = d.examples
+    .map(
+      (ex) => `<div class="example-card" data-example-id="${ex.id}" data-skill-id="${skill.id}">
+      <div class="example-title">${ex.title}</div>
+      <div class="example-preview">${ex.preview}</div>
+    </div>`
+    )
+    .join('');
+
+  examplesEl.querySelectorAll('.example-card').forEach((card) => {
+    card.addEventListener('click', () => {
+      const exId = card.dataset.exampleId;
+      const sId = parseInt(card.dataset.skillId, 10);
+      openExampleDetail(sId, exId);
+    });
+  });
+
+  modal.classList.remove('hidden');
+}
+
+function closeSkillDetail() {
+  document.getElementById('skill-detail-modal')?.classList.add('hidden');
+}
+
+function openExampleDetail(skillId, exampleId) {
+  const skill = skillsData.find((s) => s.id === skillId);
+  if (!skill || !skill.detail) return;
+  const ex = skill.detail.examples.find((e) => e.id === exampleId);
+  if (!ex) return;
+
+  currentExampleSkillName = skill.name;
+  currentExamplePrompt = ex.prompt;
+
+  document.getElementById('example-modal-title').textContent = ex.title;
+  document.getElementById('example-modal-prompt').textContent = ex.prompt;
+  document.getElementById('example-modal-response').textContent = ex.preview;
+
+  document.getElementById('skill-example-modal')?.classList.remove('hidden');
+}
+
+function closeExampleModal() {
+  document.getElementById('skill-example-modal')?.classList.add('hidden');
+}
+
+function tryExampleSkill() {
+  closeExampleModal();
+  closeSkillDetail();
+  navigateTo('home');
+  setTimeout(() => {
+    const input = document.getElementById('chat-input');
+    if (input) {
+      input.value = currentExamplePrompt;
+      input.focus();
+      input.setSelectionRange(input.value.length, input.value.length);
+    }
+  }, 100);
+}
+
+/* ---- end Skill Detail Modal ---- */
 
 export function deleteSkillFromMenu() {
   if (currentSkillMenuId !== null) {
@@ -295,6 +421,21 @@ export function initSkills() {
     if (officialSearch) {
       officialSearch.addEventListener('input', () => renderOfficialSkillsList(officialSearch.value));
     }
+  }
+
+  // Skill detail modal
+  const detailModal = document.getElementById('skill-detail-modal');
+  if (detailModal) {
+    detailModal.querySelector('.modal-overlay')?.addEventListener('click', closeSkillDetail);
+    detailModal.querySelector('[data-action="close-skill-detail"]')?.addEventListener('click', closeSkillDetail);
+  }
+
+  // Example detail modal
+  const exampleModal = document.getElementById('skill-example-modal');
+  if (exampleModal) {
+    exampleModal.querySelector('.modal-overlay')?.addEventListener('click', closeExampleModal);
+    exampleModal.querySelector('[data-action="close-example-modal"]')?.addEventListener('click', closeExampleModal);
+    document.getElementById('example-try-btn')?.addEventListener('click', tryExampleSkill);
   }
 
   const ctxMenu = document.getElementById('skill-context-menu');
