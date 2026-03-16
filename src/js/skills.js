@@ -3,7 +3,7 @@ import { navigateTo } from './navigation.js';
 import { skillsData } from '../data/skills.js';
 
 let currentSkillMenuId = null;
-let officialOnly = false;
+let currentFilter = 'all';
 
 const officialSkillsCatalog = [
   { id: 'excel-generator', name: 'excel-generator', desc: '专业的 Excel 电子表格创建工具，注重美观与数据可视化。', tag: '官方' },
@@ -11,7 +11,7 @@ const officialSkillsCatalog = [
   { id: 'internet-skill-finder', name: 'internet-skill-finder', desc: 'Search and recommend Agent Skills from verified GitHub repositories. Use when users ask to find, discover, search for, or recommend skills/plugins for specific tasks.', tag: '官方' },
   { id: 'github-gem-seeker', name: 'github-gem-seeker', desc: 'Search GitHub for battle-tested solutions instead of reinventing the wheel. Use when the user\'s problem is universal enough that open source developers have probably solved it.', tag: '官方' },
   { id: 'skill-creator', name: 'skill-creator', desc: '创建或更新技能的指南，通过专业知识、工作流或工具集成来扩展 Manus。对于任何修改或改进请求，必须首先阅读此技能并遵循其更新工作流，而不是直接编辑文件。', tag: '官方' },
-  { id: 'tiktok-smart-selection', name: 'tiktok-smart-selection', desc: '智能挖掘 TikTok 热门商品及高潜力新品，支持按类目、销量增长率、达人带货力等维度筛选。', tag: '个人' },
+  { id: 'tiktok-smart-selection', name: 'tiktok-smart-selection', desc: '智能挖掘 TikTok 热门商品及高潜力新品，支持按类目、销量增长率、达人带货力等维度筛选。', tag: '个人', category: 'ecommerce' },
   { id: 'video-generator', name: 'video-generator', desc: '专业的 AI 视频制作工作流。在创建视频、短片、广告或任何使用 AI 生成工具的视频内容时使用。', tag: '官方' },
   { id: 'stock-analysis', name: 'stock-analysis', desc: '使用金融市场数据分析股票和公司。获取公司概况、技术见解、价格图表、内部持股和 SEC 申报文件，进行全面的股票研究。', tag: '官方' },
 ];
@@ -24,8 +24,17 @@ export function renderSkills() {
   const filtered = skillsData.filter((s) => {
     const matchSearch =
       s.name.toLowerCase().includes(search) || s.desc.toLowerCase().includes(search);
-    const matchOfficial = officialOnly ? s.official : true;
-    return matchSearch && matchOfficial;
+    
+    let matchFilter = true;
+    if (currentFilter === 'official') {
+      matchFilter = s.official;
+    } else if (currentFilter === 'personal') {
+      matchFilter = !s.official;
+    } else if (currentFilter === 'ecommerce') {
+      matchFilter = s.category === 'ecommerce';
+    }
+
+    return matchSearch && matchFilter;
   });
 
   grid.innerHTML = filtered
@@ -162,8 +171,8 @@ function renderOfficialSkillsList(search = '') {
           </div>
           <p class="text-xs text-slate-400 mt-0.5 line-clamp-2">${s.desc}</p>
         </div>
-        <button class="flex-shrink-0 text-sm px-3 py-1.5 rounded-lg transition-colors ${added ? 'bg-slate-100 text-slate-400 cursor-default' : 'bg-slate-900 text-white hover:bg-slate-700'}" 
-                data-action="add-official-skill" data-skill-catalog-id="${s.id}" ${added ? 'disabled' : ''}>
+        <button class="flex-shrink-0 text-sm px-3 py-1.5 rounded-lg transition-colors ${added ? 'bg-slate-100 text-slate-500 hover:bg-rose-50 hover:text-rose-500' : 'bg-slate-900 text-white hover:bg-slate-700'}" 
+                data-action="add-official-skill" data-skill-catalog-id="${s.id}">
           ${added ? '已添加' : '+ 添加'}
         </button>
       </div>
@@ -171,22 +180,31 @@ function renderOfficialSkillsList(search = '') {
   }).join('');
 
   list.querySelectorAll('[data-action="add-official-skill"]').forEach(btn => {
-    if (btn.disabled) return;
     btn.addEventListener('click', () => {
       const catalogId = btn.getAttribute('data-skill-catalog-id');
       const catalogSkill = officialSkillsCatalog.find(s => s.id === catalogId);
       if (!catalogSkill) return;
-      skillsData.push({
-        id: Date.now(),
-        name: catalogSkill.name,
-        desc: catalogSkill.desc,
-        enabled: true,
-        official: catalogSkill.tag === '官方',
-        date: '2026年3月13日',
-      });
+
+      const existingIdx = skillsData.findIndex(s => s.name === catalogSkill.name);
+      
+      if (existingIdx > -1) {
+        skillsData.splice(existingIdx, 1);
+        showToast(`已移除技能 ${catalogSkill.name}`);
+      } else {
+        skillsData.push({
+          id: Date.now(),
+          name: catalogSkill.name,
+          desc: catalogSkill.desc,
+          enabled: true,
+          official: catalogSkill.tag === '官方',
+          category: catalogSkill.category,
+          date: '2026年3月13日',
+        });
+        showToast(`已添加技能 ${catalogSkill.name}`);
+      }
+      
       renderOfficialSkillsList(document.getElementById('official-skill-search')?.value || '');
       renderSkills();
-      showToast(`已添加技能 ${catalogSkill.name}`);
     });
   });
 }
@@ -238,6 +256,30 @@ export function initSkills() {
     filterBtn.addEventListener('click', toggleOfficialFilter);
   }
 
+  const filterTypeBtn = document.getElementById('filter-type-btn');
+  const filterTypeMenu = document.getElementById('filter-type-menu');
+  
+  if (filterTypeBtn && filterTypeMenu) {
+    filterTypeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      filterTypeMenu.classList.toggle('hidden');
+    });
+    
+    document.addEventListener('click', (e) => {
+      if (!filterTypeBtn.contains(e.target) && !filterTypeMenu.contains(e.target)) {
+        filterTypeMenu.classList.add('hidden');
+      }
+    });
+
+    filterTypeMenu.querySelectorAll('[data-filter]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentFilter = btn.dataset.filter;
+        renderSkills();
+        filterTypeMenu.classList.add('hidden');
+      });
+    });
+  }
+
   document.addEventListener('click', (e) => {
     if (!e.target.closest('#skill-context-menu')) {
       hideSkillMenu();
@@ -258,16 +300,27 @@ export function initSkills() {
   const ctxMenu = document.getElementById('skill-context-menu');
   if (ctxMenu) {
     ctxMenu.querySelector('[data-action="try-skill"]')?.addEventListener('click', () => {
+      const skill = skillsData.find(s => s.id === currentSkillMenuId);
       hideSkillMenu();
-      showToast('正在启动技能试用...');
+      if (skill) {
+        navigateTo('home');
+        setTimeout(() => {
+          const input = document.getElementById('chat-input');
+          if (input) {
+            input.value = `我刚为 fastmoss ai 添加了 /${skill.name} 技能。你能用一些优秀的例子来演示它吗？`;
+            input.focus();
+            input.setSelectionRange(input.value.length, input.value.length);
+          }
+        }, 100);
+      }
     });
     ctxMenu.querySelector('[data-action="download-skill"]')?.addEventListener('click', () => {
       hideSkillMenu();
       showToast('开始下载技能...');
     });
     ctxMenu.querySelector('[data-action="edit-skill"]')?.addEventListener('click', () => {
-      hideSkillMenu();
       const skill = skillsData.find(s => s.id === currentSkillMenuId);
+      hideSkillMenu();
       if (skill) {
         navigateTo('home');
         setTimeout(() => {

@@ -14,33 +14,64 @@ export function renderSchedules() {
   }
 
   empty.classList.add('hidden');
-  list.innerHTML = schedules
+
+  let html = `
+    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden custom-shadow">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="bg-slate-50 border-b border-slate-200 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+            <th class="px-6 py-4">任务名称</th>
+            <th class="px-6 py-4">提示词</th>
+            <th class="px-6 py-4">执行时间</th>
+            <th class="px-6 py-4">状态</th>
+            <th class="px-6 py-4 text-right">操作</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-100">
+  `;
+
+  html += schedules
     .map(
       (s, i) => `
-    <div class="bg-white border border-slate-200 rounded-xl p-5 custom-shadow flex items-start justify-between">
-      <div class="flex-1 min-w-0">
-        <h4 class="font-semibold text-sm text-slate-900">${s.title}</h4>
-        <p class="text-xs text-slate-400 mt-1 truncate">${s.prompt}</p>
-        <div class="flex items-center gap-3 mt-3 text-xs text-slate-400">
-          <span class="flex items-center gap-1">
-            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            ${s.repeat} \u00b7 ${s.date} ${s.time}
-          </span>
+    <tr class="hover:bg-slate-50 transition-colors">
+      <td class="px-6 py-4">
+        <div class="font-medium text-slate-900 text-sm">${s.title}</div>
+      </td>
+      <td class="px-6 py-4">
+        <div class="text-xs text-slate-500 truncate max-w-[200px]" title="${s.prompt}">${s.prompt}</div>
+      </td>
+      <td class="px-6 py-4">
+        <div class="flex items-center gap-1.5 text-sm text-slate-600">
+          <svg class="h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>${s.repeat === '不重复' ? s.date : s.repeat} ${s.time}</span>
         </div>
-      </div>
-      <div class="flex items-center gap-2 ml-4">
-        <div class="toggle-switch ${s.enabled ? 'on' : 'off'}" data-action="toggle-schedule" data-index="${i}">
-          <div class="toggle-dot"></div>
-        </div>
-        <button data-action="delete-schedule" data-index="${i}" class="p-1.5 hover:bg-rose-50 rounded text-slate-400 hover:text-rose-500">
+      </td>
+      <td class="px-6 py-4">
+        <button class="relative inline-flex h-5 w-9 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
+          s.enabled ? 'bg-rose-500' : 'bg-slate-200'
+        }" data-action="toggle-schedule" data-index="${i}">
+          <span class="pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
+            s.enabled ? 'translate-x-4' : 'translate-x-0'
+          }"></span>
+        </button>
+      </td>
+      <td class="px-6 py-4 text-right">
+        <button data-action="delete-schedule" data-index="${i}" class="text-slate-400 hover:text-rose-500 transition-colors p-1">
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
         </button>
-      </div>
-    </div>
+      </td>
+    </tr>
   `
     )
     .join('');
 
+  html += `
+        </tbody>
+      </table>
+    </div>
+  `;
+
+  list.innerHTML = html;
   bindScheduleEvents();
 }
 

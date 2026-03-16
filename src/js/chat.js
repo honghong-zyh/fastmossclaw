@@ -46,10 +46,19 @@ function insertMentionTag(name, type) {
 
   const tag = `@${type}:${name} `;
   const pos = input.selectionStart || input.value.length;
-  input.value = input.value.substring(0, pos) + tag + input.value.substring(pos);
-  input.focus();
-  const newPos = pos + tag.length;
-  input.setSelectionRange(newPos, newPos);
+  const before = input.value.substring(0, pos);
+  
+  if (before.endsWith('@')) {
+    input.value = before.slice(0, -1) + tag + input.value.substring(pos);
+    const newPos = pos - 1 + tag.length;
+    input.focus();
+    input.setSelectionRange(newPos, newPos);
+  } else {
+    input.value = input.value.substring(0, pos) + tag + input.value.substring(pos);
+    input.focus();
+    const newPos = pos + tag.length;
+    input.setSelectionRange(newPos, newPos);
+  }
 }
 
 function switchTab(btn) {
@@ -69,7 +78,7 @@ function switchTab(btn) {
   });
 }
 
-function showSkillsPicker() {
+function showSkillsPicker(showSearch = false) {
   const picker = document.getElementById('skills-picker');
   if (!picker) return;
 
@@ -81,9 +90,23 @@ function showSkillsPicker() {
     picker.style.top = 'auto';
   }
 
+  const searchContainer = document.getElementById('skills-picker-search-container');
+  const searchInput = document.getElementById('skills-picker-search');
+  
+  if (searchContainer) {
+    if (showSearch) {
+      searchContainer.classList.remove('hidden');
+      if (searchInput) {
+        searchInput.value = '';
+        setTimeout(() => searchInput.focus(), 50);
+      }
+    } else {
+      searchContainer.classList.add('hidden');
+    }
+  }
+
   picker.classList.remove('hidden');
   renderSkillsPicker();
-  document.getElementById('skills-picker-search')?.focus();
 }
 
 function hideSkillsPicker() {
@@ -122,12 +145,18 @@ function renderSkillsPicker(search = '') {
       const name = btn.getAttribute('data-skill-name');
       const input = document.getElementById('chat-input');
       if (input) {
-        const tag = `/${name} `;
-        const pos = input.selectionStart || input.value.length;
-        input.value = input.value.substring(0, pos) + tag + input.value.substring(pos);
-        input.focus();
-        const newPos = pos + tag.length;
-        input.setSelectionRange(newPos, newPos);
+        const cursor = input.selectionStart;
+        const val = input.value;
+        const lastSlash = val.lastIndexOf('/', cursor);
+        
+        if (lastSlash !== -1) {
+           const tag = `/${name} `;
+           const newVal = val.slice(0, lastSlash) + tag + val.slice(cursor);
+           input.value = newVal;
+           const newPos = lastSlash + tag.length;
+           input.focus();
+           input.setSelectionRange(newPos, newPos);
+        }
       }
       hideSkillsPicker();
     });
@@ -141,6 +170,40 @@ export function initChat() {
       if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
         sendMessage();
+      }
+    });
+
+    input.addEventListener('input', (e) => {
+      const val = input.value;
+      const cursor = input.selectionStart;
+      const char = e.data;
+      
+      // Check for / trigger
+      const lastSlash = val.lastIndexOf('/', cursor);
+      if (lastSlash !== -1) {
+        const beforeSlash = val.slice(0, lastSlash);
+        if (lastSlash === 0 || beforeSlash.endsWith(' ') || beforeSlash.endsWith('\n')) {
+          const query = val.slice(lastSlash + 1, cursor);
+          // Only show if query doesn't contain spaces (simple command mode)
+          if (!query.includes(' ')) {
+            showSkillsPicker(false); // Do not show search input
+            renderSkillsPicker(query);
+          } else {
+            hideSkillsPicker();
+          }
+        } else {
+            hideSkillsPicker();
+        }
+      } else {
+        hideSkillsPicker();
+      }
+
+      // Check for @ trigger
+      if (char === '@' || (val.slice(0, cursor).endsWith('@'))) {
+        const beforeAt = val.slice(0, cursor - 1);
+        if (cursor === 1 || beforeAt.endsWith(' ') || beforeAt.endsWith('\n')) {
+          showMentionModal(insertMentionTag);
+        }
       }
     });
   }
@@ -165,7 +228,7 @@ export function initChat() {
       if (picker && !picker.classList.contains('hidden')) {
         hideSkillsPicker();
       } else {
-        showSkillsPicker();
+        showSkillsPicker(true); // Show search input
       }
     });
   }

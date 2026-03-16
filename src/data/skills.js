@@ -5,6 +5,7 @@ export const skillsData = [
     desc: '智能挖掘 TikTok 热门商品及高潜力新品。支持按类目、销量增长率、达人带货力等维度筛选，并...',
     enabled: true,
     official: false,
+    category: 'ecommerce',
     date: '2026年3月12日',
   },
   {

@@ -262,16 +262,29 @@
           <h2 class="text-2xl font-bold text-slate-900">技能</h2>
           <p class="text-sm text-slate-400 mt-1">为您的智能体预封装且可重复的最佳实践与工具</p>
         </div>
-        <button class="text-slate-400 hover:text-slate-600" data-nav="home">
-          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
       </div>
 
       <!-- Search & Filters -->
       <div class="flex items-center gap-3 mb-6 mt-6">
-        <button class="p-2 border border-slate-200 rounded-lg hover:bg-slate-50">
-          <svg class="h-4 w-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
-        </button>
+        <div class="relative">
+          <button id="filter-type-btn" class="p-2 border border-slate-200 rounded-lg hover:bg-slate-50">
+            <svg class="h-4 w-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+          </button>
+          <div id="filter-type-menu" class="hidden absolute left-0 top-full mt-2 w-32 bg-white border border-slate-200 rounded-xl shadow-lg dropdown-menu z-30 overflow-hidden">
+            <button data-filter="all" class="w-full text-left px-4 py-2.5 text-sm text-slate-700 hover:bg-slate-50 flex items-center gap-2">
+              <span>所有类型</span>
+            </button>
+            <button data-filter="official" class="w-full text-left px-4 py-2.5 text-sm text-slate-700 hover:bg-slate-50 flex items-center gap-2">
+              <span>官方</span>
+            </button>
+            <button data-filter="ecommerce" class="w-full text-left px-4 py-2.5 text-sm text-slate-700 hover:bg-slate-50 flex items-center gap-2">
+              <span>电商专区</span>
+            </button>
+            <button data-filter="personal" class="w-full text-left px-4 py-2.5 text-sm text-slate-700 hover:bg-slate-50 flex items-center gap-2">
+              <span>个人</span>
+            </button>
+          </div>
+        </div>
         <div class="flex-1 relative">
           <svg class="h-4 w-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
           <input type="text" id="skill-search" placeholder="搜索技能" class="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-rose-500/20 focus:border-rose-300" />
@@ -279,7 +292,7 @@
         <div class="flex items-center gap-2">
           <button id="filter-official" class="flex items-center gap-1 px-3 py-2 border border-slate-200 rounded-lg text-sm hover:bg-slate-50">
             <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"/></svg>
-            官方
+            技能库
           </button>
           <div class="relative">
             <button data-action="toggle-add-menu" class="flex items-center gap-1 px-3 py-2 bg-slate-900 text-white rounded-lg text-sm hover:bg-slate-800">
@@ -530,14 +543,6 @@
     <svg class="h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
     下载
   </button>
-  <button data-action="edit-skill" class="w-full text-left px-4 py-2.5 text-sm text-slate-700 hover:bg-slate-50 flex items-center gap-2">
-    <svg class="h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
-    使用 Manus 编辑
-  </button>
-  <button data-action="replace-skill" class="w-full text-left px-4 py-2.5 text-sm text-slate-700 hover:bg-slate-50 flex items-center gap-2">
-    <svg class="h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-    替换
-  </button>
   <button data-action="delete-skill" class="w-full text-left px-4 py-2.5 text-sm text-rose-500 hover:bg-rose-50 flex items-center gap-2">
     <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
     删除
@@ -714,7 +719,7 @@
 
 <!-- Skills Picker Popup (shown from chat input) -->
 <div id="skills-picker" class="fixed z-50 hidden bg-white border border-slate-200 rounded-xl shadow-lg w-72 max-h-80 overflow-hidden flex flex-col">
-  <div class="p-3 border-b border-slate-100">
+  <div class="p-3 border-b border-slate-100 hidden" id="skills-picker-search-container">
     <div class="relative">
       <svg class="h-3.5 w-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
       <input type="text" id="skills-picker-search" placeholder="搜索技能" class="w-full pl-8 pr-3 py-1.5 border border-slate-200 rounded-lg text-xs focus:ring-2 focus:ring-rose-500/20 focus:border-rose-300" />
